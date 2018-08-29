@@ -1,0 +1,7 @@
+# CODEOWNER Definition
+#
+# Read about Codeowners concept here: https://help.github.com/articles/about-codeowners/
+
+# These owners will be the default owners for everything in the repo 
+# They will be requested for review when someone opens a pull request.
+* @SolutionPioneering/codeowners-persephone-cap
