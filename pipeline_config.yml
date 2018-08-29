@@ -1,0 +1,124 @@
+#Project Setup
+general:
+## TODO: final we have to use master branch here, but currently we are working on branch pipeline
+  productiveBranch: 'pipeline'  
+
+#Steps Specific Configuration
+steps:
+  executeMaven:
+#    dockerImage: 'maven:3.5.0-jdk-8'
+    globalSettingsFile: ''
+    projectSettingsFile : ''
+
+  deployToCfWithCli:
+#    dockerImage: 's4sdk/docker-cf-cli'
+    smokeTestStatusCode: '200'
+
+  deployToCfWithCliMTA:
+    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
+
+  executeNpm:
+    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-node-browsers'
+
+#  checkFindbugs and checkPmd must be explicitly overriden currently -> default config is to scan module 'application' -> in mta we only execute it in the java modules
+  checkFindbugs:
+      includeFilterFile: s4hana_findbugs_include_filter.xml
+      scanModules:
+        - ''
+
+  checkPmd:
+    scanModules:
+      - ''
+
+  mtaBuild:
+#    'applicationName' -> used to generate mta.yaml from package.json
+    buildTarget : 'CF'
+#    'extension'
+#    'mtaJarLocation'  -> in default env already
+
+
+
+#Stage Specific Configurations
+stages:
+  staticCodeChecks:
+    findbugsExcludesFile: '' #Path to findbugs exclude file
+    pmdExcludes: '' # List or ANT style patterns
+
+  integrationTests:
+    credentials:
+      - alias: 'ERP_SYSTEM'
+        credentialId: 'CXT'
+
+#//TODO check wether it should be moved to default config - no docker images defined here normally
+  buildBackend:
+    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
+
+  unitTests:
+    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
+
+#  frontendUnitTests:
+#    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
+
+
+
+  s4SdkQualityChecks:
+#  defaults to all java modules in MTA Projects if no scan module given
+    scanModules:
+      - srv
+#      - bdc
+    jacocoExcludes:
+      - ''
+    nonErpDestinations:
+      - ''
+
+# TODO Replace Checkmarx  with own configuration!
+  checkmarxScan:
+    checkMarxProjectName: 'SAP Cap Pipeline'
+    groupId: '898facce-6dca-4cb4-8659-5ba1e873a7a6'
+#    filterPattern: '!target/**, Frontend/**'
+    fullScansScheduled: false
+    generatePdfReport: true
+    incremental: true
+    preset: '100008' # 100106 = SAP_Default_JavaScript
+    vulnerabilityThresholdMedium: 10
+    vulnerabilityThresholdLow: 100
+
+  whitesourceScan:
+    product: 'SHC - CAN BE DELETED'
+    credentialsId: 'whitesource-orgToken'
+
+  sourceClearScan:
+    credentialsId: 'SRCCLR_API_TOKEN'
+    config:
+      vuln_methods_extra_ignored_directories: docs, srv/integration-tests, srv/unit-tests, srv/src/test, base_project/backup
+      scope: production
+
+  productionDeployment:
+    cfTargets:
+      - org: 'Persephone'
+        space: 'dev'
+        apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+        appName: 'capWithPipeline'
+        credentialsId: 'CF-DEPLOY-SAP'
+
+  artifactDeployment:
+      nexus:
+#      ArtifactId is default the ID from the MTA.yaml -> can be overwritten
+#        artifactId:
+#        credentialsId: '12345677'
+        groupId: 'com.company.capupdatecall'
+        version: 'nexus3'
+        url: '10.47.240.62:8081'
+        repository: 'maven-mixed'
+
+# Comment in CloudFoundry for productive usage
+  cloudFoundryDeploy:
+    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
+    smokeTestStatusCode: '200'
+#    cloudFoundry:
+#      org: 'CloudApps'
+#      space: 'sdk_update_call'
+#      appName: 'capWithPipeline'
+##      manifest: 'manifest.yml'
+#      credentialsId: 'CF-DEPLOY-SAP'
+#      apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
