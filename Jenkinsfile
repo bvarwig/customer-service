@@ -31,10 +31,12 @@ pipeline {
                 // needs definiton in pom.xml that no unit tests are being run
                 stage("Backend") { steps { stageBuildBackend script: this } }
 
+		/*    
                 stage("Frontend") {
                     when { expression { commonPipelineEnvironment.configuration.skipping.FRONT_END_BUILD } }
                     steps { stageBuildFrontend script: this }
                 }
+		*/
             }
         }
 
