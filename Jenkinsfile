@@ -70,7 +70,7 @@ pipeline {
                 }
             }
         }
-
+*/
 
         // Config to specifiy scan modules
          //Problem: integration test work (find artifact from main module) to generate audit logs that can be analayzed here
@@ -78,7 +78,7 @@ pipeline {
             steps { stageS4SdkQualityChecks script: this }
         }
 
-        stage('Third-party Checks') {
+  /*      stage('Third-party Checks') {
             when { expression { commonPipelineEnvironment.configuration.skipping.THIRD_PARTY_CHECKS } }
             parallel {
                 // Untested ->  need to Setup Checkmarx Server
