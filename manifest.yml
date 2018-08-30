@@ -1,0 +1,9 @@
+---
+applications:
+  - name: customersrv
+    memory: 512M
+    buildpack: sap_java_buildpack
+    path: application/target/customersrv-1.0.war  
+    services:
+    - dest-service
+    - cap-uaa
