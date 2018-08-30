@@ -76,10 +76,10 @@ stages:
 
   productionDeployment:
     cfTargets:
-      - org: 'Persephone'
+      - org: 'I030998trial_trial'
         space: 'dev'
-        apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
-        appName: 'capWithPipeline'
+        apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
+        appName: 'customersrv'
         credentialsId: 'CF-DEPLOY-SAP'
 
   artifactDeployment:
