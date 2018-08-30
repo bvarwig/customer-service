@@ -14,11 +14,6 @@ steps:
 #    dockerImage: 's4sdk/docker-cf-cli'
     smokeTestStatusCode: '200'
 
-  deployToCfWithCliMTA:
-    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
-
-  executeNpm:
-    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-node-browsers'
 
 #  checkFindbugs and checkPmd must be explicitly overriden currently -> default config is to scan module 'application' -> in mta we only execute it in the java modules
   checkFindbugs:
@@ -48,17 +43,6 @@ stages:
     credentials:
       - alias: 'ERP_SYSTEM'
         credentialId: 'CXT'
-
-#//TODO check wether it should be moved to default config - no docker images defined here normally
-  buildBackend:
-    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
-
-  unitTests:
-    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
-
-#  frontendUnitTests:
-#    dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
-
 
 
   s4SdkQualityChecks:
