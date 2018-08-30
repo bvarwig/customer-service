@@ -48,7 +48,7 @@ stages:
   s4SdkQualityChecks:
 #  defaults to all java modules in MTA Projects if no scan module given
     scanModules:
-      - srv
+      - application
 #      - bdc
     jacocoExcludes:
       - ''
