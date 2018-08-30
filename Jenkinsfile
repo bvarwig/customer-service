@@ -7,7 +7,7 @@ node {
     load './pipelines/s4sdk-pipeline.groovy'
 } */
 
-final def pipelineSdkVersion = 'mta'
+//final def pipelineSdkVersion = 'mta'
 
 pipeline {
     agent any
