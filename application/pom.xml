@@ -11,7 +11,7 @@
 	<groupId>com.company.persephonecustomer</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>srv</name>
+	<name>Customer Service</name>
 	<properties>
 		<packageName>com.sap.solpio.persephonecustomer</packageName>
 	</properties>
