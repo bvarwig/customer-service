@@ -40,9 +40,6 @@ stages:
     pmdExcludes: '' # List or ANT style patterns
 
   integrationTests:
-    credentials:
-      - alias: 'ERP_SYSTEM'
-        credentialId: 'CXT'
 
 
   s4SdkQualityChecks:
