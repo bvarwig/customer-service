@@ -34,8 +34,6 @@ pipeline {
         }
 
 
-
-
         stage('Local Tests') {
             parallel {
 
@@ -78,7 +76,7 @@ pipeline {
             steps { stageS4SdkQualityChecks script: this }
         }
 
-  /*      stage('Third-party Checks') {
+        stage('Third-party Checks') {
             when { expression { commonPipelineEnvironment.configuration.skipping.THIRD_PARTY_CHECKS } }
             parallel {
                 // Untested ->  need to Setup Checkmarx Server
@@ -104,7 +102,7 @@ pipeline {
         }
 
 
-
+/*
 
         stage('Artifact Deployment') {
             //when { expression { commonPipelineEnvironment.configuration.skipping.ARTIFACT_DEPLOYMENT } }
