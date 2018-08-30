@@ -110,12 +110,12 @@ pipeline {
             steps { stageArtifactDeployment script: this }
         }
 
-
+*/
         stage('Production Deployment') {
             //when { expression { commonPipelineEnvironment.configuration.skipping.PRODUCTION_DEPLOYMENT } }
             steps { stageProductionDeployment script: this }
         }
-*/
+
 
     }
     post {
