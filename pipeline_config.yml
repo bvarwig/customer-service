@@ -81,6 +81,7 @@ stages:
         apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
         appName: 'customersrv'
         credentialsId: 'CF-DEPLOY-SAP'
+        manifest: manifest.yml
 
   artifactDeployment:
       nexus:
