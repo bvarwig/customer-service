@@ -1,9 +1,0 @@
----
-applications:
-  - name: customersrv
-    memory: 512M
-    buildpack: sap_java_buildpack
-    path: target/srv-0.0.1-SNAPSHOT.war  
-    services:
-    - dest-service
-    - cap-uaa
