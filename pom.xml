@@ -3,11 +3,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Customer Service</name>
+    <name>Customer Service Parent Pom</name>
     <description>Services to read and write customers to S4Hana</description>
 
     <groupId>com.company.persephonecustomer</groupId>
-    <artifactId>customer-service</artifactId>
+    <artifactId>customer-service-parent</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
 
