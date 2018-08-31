@@ -9,9 +9,7 @@ steps:
     projectSettingsFile : ''
 
   deployToCfWithCli:
-#    dockerImage: 's4sdk/docker-cf-cli'
     smokeTestStatusCode: '307'
-
 
 #  checkFindbugs and checkPmd must be explicitly overriden currently -> default config is to scan module 'application' -> in mta we only execute it in the java modules
   checkFindbugs:
@@ -24,10 +22,7 @@ steps:
       - ''
 
   mtaBuild:
-#    'applicationName' -> used to generate mta.yaml from package.json
     buildTarget : 'CF'
-#    'extension'
-#    'mtaJarLocation'  -> in default env already
 
 
 
@@ -83,22 +78,8 @@ stages:
 
   artifactDeployment:
       nexus:
-#      ArtifactId is default the ID from the MTA.yaml -> can be overwritten
-#        artifactId:
-#        credentialsId: '12345677'
         groupId: 'com.company.capupdatecall'
         version: 'nexus3'
         url: '10.47.240.62:8081'
         repository: 'maven-mixed'
 
-# Comment in CloudFoundry for productive usage
-#  cloudFoundryDeploy:
- #   dockerImage: 'docker.wdf.sap.corp:51162/s4sdk/docker-cf-cli-mta'
-#    smokeTestStatusCode: '200'
-#    cloudFoundry:
-#      org: 'CloudApps'
-#      space: 'sdk_update_call'
-#      appName: 'capWithPipeline'
-##      manifest: 'manifest.yml'
-#      credentialsId: 'CF-DEPLOY-SAP'
-#      apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
