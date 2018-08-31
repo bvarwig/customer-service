@@ -37,7 +37,7 @@ pipeline {
         stage('Local Tests') {
             parallel {
 
-               stage("Static Code Checks") { steps { stageStaticCodeChecks script: this } }
+               //stage("Static Code Checks") { steps { stageStaticCodeChecks script: this } }
                stage("Backend Unit Tests") { steps { stageUnitTests script: this } }
                stage("Backend Integration Tests") { steps { stageIntegrationTests script: this } }
                // NSP.log is not being found
