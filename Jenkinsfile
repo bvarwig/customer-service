@@ -37,14 +37,9 @@ pipeline {
         stage('Local Tests') {
             parallel {
 
-               //stage("Static Code Checks") { steps { stageStaticCodeChecks script: this } }
+               stage("Static Code Checks") { steps { stageStaticCodeChecks script: this } }
                stage("Backend Unit Tests") { steps { stageUnitTests script: this } }
                stage("Backend Integration Tests") { steps { stageIntegrationTests script: this } }
-              //Frontend Unit Tests as script in frontend module!
-               /* stage("Frontend Unit Tests") {
-                    when { expression { commonPipelineEnvironment.configuration.skipping.FRONT_END_TESTS } }
-                   steps { stageFrontendUnitTests script: this }
-                }*/
                // NSP.log is not being found
                 stage("Node Security Platform Scan") {
                     when { expression { commonPipelineEnvironment.configuration.skipping.NODE_SECURITY_SCAN } }
