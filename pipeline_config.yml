@@ -1,12 +1,10 @@
 #Project Setup
 general:
-## TODO: final we have to use master branch here, but currently we are working on branch pipeline
   productiveBranch: 'pipeline'  
 
 #Steps Specific Configuration
 steps:
   executeMaven:
-#    dockerImage: 'maven:3.5.0-jdk-8'
     globalSettingsFile: ''
     projectSettingsFile : ''
 
