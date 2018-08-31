@@ -12,7 +12,7 @@ steps:
 
   deployToCfWithCli:
 #    dockerImage: 's4sdk/docker-cf-cli'
-#    smokeTestStatusCode: '200'
+    smokeTestStatusCode: '307'
 
 
 #  checkFindbugs and checkPmd must be explicitly overriden currently -> default config is to scan module 'application' -> in mta we only execute it in the java modules
