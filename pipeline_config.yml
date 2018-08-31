@@ -1,6 +1,6 @@
 #Project Setup
 general:
-  productiveBranch: 'master'  
+  productiveBranch: 'pipeline'  
 
 #Steps Specific Configuration
 steps:
