@@ -67,9 +67,9 @@ pipeline {
 
         // Config to specifiy scan modules
          //Problem: integration test work (find artifact from main module) to generate audit logs that can be analayzed here
-      /*stage('Quality Checks') {
+      stage('Quality Checks') {
             steps { stageS4SdkQualityChecks script: this }
-        }*/
+        }
 
 /*	    
         stage('Third-party Checks') {
