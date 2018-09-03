@@ -69,10 +69,10 @@ stages:
 
   productionDeployment:
     cfTargets:
-      - org: 'I030998trial_trial'
-        space: 'dev'
+      - org: 'Persephone'
+        space: 'workflow-events'
         apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
-        appName: 'customersrv'
+        appName: 'customersrv-demo'
         credentialsId: 'CF-DEPLOY-SAP'
         manifest: manifest.yml
 
